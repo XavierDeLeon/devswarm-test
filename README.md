@@ -65,6 +65,41 @@ docker compose down -v
 docker compose restart medplum-server
 ```
 
+## Frontend (React App)
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+)
+
+### Setup
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+Opens at [http://localhost:3001](http://localhost:3001). Make sure the Medplum server is running via Docker Compose first.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+### Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `VITE_MEDPLUM_BASE_URL` | Medplum FHIR server URL | `http://localhost:8103` |
+| `VITE_MEDPLUM_CLIENT_ID` | OAuth client ID (optional) | — |
+
+Only variables prefixed with `VITE_` are exposed to the browser. Server-side secrets (database passwords, etc.) are never bundled into the frontend.
+
 ## Configuration
 
 All configuration is managed through environment variables in `.env`. See `.env.example` for available options and descriptions.
